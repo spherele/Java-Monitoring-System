@@ -18,11 +18,11 @@ public class ListForm {
     }
 
     private void initComponents() throws IOException {
-         JFrame frame;
-         JLabel label;
-         JPanel panel;
-         JButton buttonCreate;
-         JButton buttonClose;
+        JFrame frame;
+        JLabel label;
+        JPanel panel;
+        JButton buttonCreate;
+        JButton buttonClose;
         frame = new JFrame("Список задач");
         frame.setSize(640, 640);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -41,18 +41,17 @@ public class ListForm {
 
         label = new JLabel();
 
-            Map<String, ArrayList<String>> restoredHashMap = loadTXT();
-            StringBuilder stringBuilder = new StringBuilder();
-                for (Map.Entry<String, ArrayList<String>> entry : restoredHashMap.entrySet()) {
+        Map<String, ArrayList<String>> restoredHashMap = loadTXT();
+        StringBuilder stringBuilder = new StringBuilder();
+            for (Map.Entry<String, ArrayList<String>> entry : restoredHashMap.entrySet()) {
+                stringBuilder.append(entry.getKey()).append(": ").append(entry.getValue()).append("<br>");
+            }
 
-                    stringBuilder.append(entry.getKey()).append(": ").append(entry.getValue()).append("<br>");
-                }
-
-            String end = stringBuilder.toString().replaceAll("\\[", "").replaceAll("\\]", "");
-            label.setText("<html>" + end + "</html>");
-            constraints.gridx = 0;
-            constraints.gridy = 0;
-            panel.add(label, constraints);
+        String end = stringBuilder.toString().replaceAll("\\[", "").replaceAll("\\]", "");
+        label.setText("<html>" + end + "</html>");
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        panel.add(label, constraints);
 
 
 
