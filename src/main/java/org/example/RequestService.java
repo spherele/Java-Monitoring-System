@@ -18,15 +18,15 @@ public class RequestService {
     public void deleteRequest() {}
     public void changeRequestStatus() {}
 
-    public List<String> getRequests() {
-         var requests = requestRepository.findAll().stream().toList();
-         List<String> requestsReturn = new ArrayList<>();
-         for (Request request : requests) {
-//             System.out.println(request.getId()+ ". " + request.getName() + "   Приоритет: " + request.getPriority());
-             requestsReturn.add(request.getId()+ ". " + request.getName() + "   Приоритет: " + request.getPriority());
-         }
-         return requestsReturn;
-    }
+//    public List<String> getRequests() {
+//         var requests = requestRepository.findAll().stream().toList();
+//         List<String> requestsReturn = new ArrayList<>();
+//         for (Request request : requests) {
+////             System.out.println(request.getId()+ ". " + request.getName() + "   Приоритет: " + request.getPriority());
+//             requestsReturn.add(request.getId()+ ". " + request.getName() + "   Приоритет: " + request.getPriority());
+//         }
+//         return requestsReturn;
+//    }
 
 
 
