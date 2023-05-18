@@ -72,6 +72,9 @@ public class MainForm extends JFrame {
     }
 
     public void addTask(Task task) {
+        if (tasks.contains(task)) {
+            return;
+        }
         tasks.add(task);
         taskListModel.addElement(task);
     }

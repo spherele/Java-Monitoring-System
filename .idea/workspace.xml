@@ -5,18 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9d5116e-6708-437d-9e08-273c0a54f08b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MainForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/MainForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SwingApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SwingApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Task.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/TaskForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/TaskForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/MainForm$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/MainForm$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/MainForm$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/MainForm$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/MainForm.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/SwingApp$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Task.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Task.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/TaskForm$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/TaskForm$1.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,11 +91,25 @@
       <workItem from="1683814938237" duration="672000" />
       <workItem from="1684377998194" duration="3981000" />
       <workItem from="1684381996724" duration="11752000" />
+      <workItem from="1684405209251" duration="217000" />
+      <workItem from="1684405639286" duration="6000" />
+      <workItem from="1684405658423" duration="1968000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

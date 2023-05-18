@@ -2,8 +2,6 @@ package org.example;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 
 class TaskForm extends JFrame {
@@ -39,16 +37,14 @@ class TaskForm extends JFrame {
         add(inputPanel, BorderLayout.CENTER);
 
         JButton createButton = new JButton("Создать");
-        createButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String executor = (String) executorComboBox.getSelectedItem();
-                String name = nameField.getText();
-                String priority = (String) priorityComboBox.getSelectedItem();
-                String status = "Открыта";
-                Task task = new Task(executor, name, priority, status);
-                mainForm.addTask(task);
-                dispose();
-            }
+        createButton.addActionListener(e -> {
+            String executor = (String) executorComboBox.getSelectedItem();
+            String name = nameField.getText();
+            String priority = (String) priorityComboBox.getSelectedItem();
+            String status = "Открыта";
+            Task task = new Task(executor, name, priority, status);
+            mainForm.addTask(task);
+            dispose();
         });
 
         add(createButton, BorderLayout.SOUTH);

@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Objects;
+
 class Task {
     private final String executor;
     private final String name;
@@ -40,4 +42,20 @@ class Task {
                 "Приоритет: " + priority + "\n" +
                 "Статус: " + status;
     }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return Objects.equals(executor, task.executor) &&
+                Objects.equals(name, task.name) &&
+                Objects.equals(priority, task.priority) &&
+                Objects.equals(status, task.status);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(executor, name, priority, status);
+    }
+
 }
