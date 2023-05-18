@@ -24,8 +24,23 @@ public class MainForm extends JFrame {
 
         JPanel buttonPanel = new JPanel();
 
-        statusComboBox = new JComboBox<>(new String[]{"Открыта", "В процессе", "Завершена"});
-        buttonPanel.add(statusComboBox);
+        JButton createButton = new JButton("Создать");
+        createButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                TaskForm taskForm = new TaskForm(MainForm.this);
+                taskForm.setLocationRelativeTo(MainForm.this);
+                taskForm.setVisible(true);
+            }
+        });
+        buttonPanel.add(createButton);
+
+        JButton updateButton = new JButton("Обновить");
+        updateButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                removeDuplicates();
+            }
+        });
+        buttonPanel.add(updateButton);
 
         JButton changeStatusButton = new JButton("Изменить статус");
         changeStatusButton.addActionListener(new ActionListener() {
@@ -58,24 +73,8 @@ public class MainForm extends JFrame {
         });
         buttonPanel.add(changeStatusButton);
 
-
-        JButton updateButton = new JButton("Обновить");
-        updateButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                removeDuplicates();
-            }
-        });
-        buttonPanel.add(updateButton);
-
-        JButton createButton = new JButton("Создать");
-        createButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                TaskForm taskForm = new TaskForm(MainForm.this);
-                taskForm.setLocationRelativeTo(MainForm.this);
-                taskForm.setVisible(true);
-            }
-        });
-        buttonPanel.add(createButton);
+        statusComboBox = new JComboBox<>(new String[]{"Открыта", "В процессе", "Завершена"});
+        buttonPanel.add(statusComboBox);
 
         add(buttonPanel, BorderLayout.SOUTH);
 
