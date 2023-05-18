@@ -5,29 +5,20 @@ import javax.swing.text.BadLocationException;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainForm extends JFrame {
-    private JTextArea textArea;
-    private JComboBox<String> statusComboBox;
-    private JButton updateButton;
+    private final JTextArea textArea;
+    private final JComboBox<String> statusComboBox;
     private List<Task> tasks;
-    private List<Integer> taskIndexes;
+    private final List<Integer> taskIndexes;
 
     public MainForm() {
         setTitle("Главное окно");
         setLayout(new BorderLayout());
 
         textArea = new JTextArea();
-        textArea.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                textArea.selectAll();
-            }
-        });
         textArea.setEditable(false);
         add(new JScrollPane(textArea), BorderLayout.CENTER);
 
@@ -68,7 +59,7 @@ public class MainForm extends JFrame {
         buttonPanel.add(changeStatusButton);
 
 
-        updateButton = new JButton("Обновить");
+        JButton updateButton = new JButton("Обновить");
         updateButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 removeDuplicates();
