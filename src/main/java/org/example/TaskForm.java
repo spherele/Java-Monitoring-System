@@ -2,112 +2,60 @@ package org.example;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
-public class TaskForm {
-    MainForm mainForm;
-
-    private static final String PATH = "src/main/resources/map.txt";
-    File file = new File(PATH);
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
-    private final  Map<String, ArrayList<String>> list = new HashMap<>();
+class TaskForm extends JFrame {
+    private MainForm mainForm;
+    private JComboBox<String> executorComboBox;
+    private JTextField nameField;
+    private JComboBox<String> priorityComboBox;
 
-    public TaskForm(MainForm mainForm, String executor, String priority) {
+    public TaskForm(MainForm mainForm) {
         this.mainForm = mainForm;
-        initComponents(executor, priority);
-    }
+        setTitle("Создание заявки");
+        setPreferredSize(new Dimension(300, 200));
+        setLayout(new BorderLayout());
 
-    private void initComponents(String executor, String priority) {
-        JFrame frame;
-        JPanel panel;
-        JLabel label;
-        JTextArea textArea;
-        JButton buttonCreate;
-        JButton buttonBack;
+        JPanel inputPanel = new JPanel(new GridLayout(4, 2));
 
-        frame = new JFrame("Создание новой задачи");
-        frame.setSize(640, 640);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        panel = new JPanel(new GridBagLayout());
-        panel.setSize(640, 640);
+        JLabel executorLabel = new JLabel("Исполнитель:");
+        inputPanel.add(executorLabel);
 
-        GridBagConstraints constraints = new GridBagConstraints();
-        constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.insets = new Insets(5, 5, 5, 5);
+        executorComboBox = new JComboBox<>(new String[]{"Алексей", "Дмитрий", "Максим", "Ярослав"});
+        inputPanel.add(executorComboBox);
 
-        label = new JLabel("Задача для " + executor + ", приоритет: " + priority);
-        constraints.gridx = 0;
-        constraints.gridy = 0;
-        panel.add(label, constraints);
+        JLabel nameLabel = new JLabel("Заявка:");
+        inputPanel.add(nameLabel);
 
-        textArea = new JTextArea();
-        constraints.gridx = 0;
-        constraints.gridy = 1;
-        constraints.gridwidth = 2;
-        panel.add(textArea, constraints);
+        nameField = new JTextField();
+        inputPanel.add(nameField);
 
-        buttonCreate = new JButton("Создать");
-        constraints.gridx = 0;
-        constraints.gridy = 2;
-        constraints.gridwidth = 1;
-        panel.add(buttonCreate, constraints);
+        JLabel priorityLabel = new JLabel("Приоритет:");
+        inputPanel.add(priorityLabel);
 
-        buttonBack = new JButton("Назад");
-        constraints.gridx = 1;
-        constraints.gridy = 2;
-        constraints.gridwidth = 1;
-        panel.add(buttonBack, constraints);
+        priorityComboBox = new JComboBox<>(new String[]{"Высокий", "Средний", "Низкий"});
+        inputPanel.add(priorityComboBox);
 
-        buttonCreate.addActionListener(e -> {
-            String taskDescription = textArea.getText();
-            ArrayList<String> task = new ArrayList<>();
-            task.add(taskDescription);
-            list.put(executor, task);
-            saveTXT(list);
-            task.clear();
-            if (taskDescription.isEmpty()) {
-                JOptionPane.showMessageDialog(frame, "Описание задачи не может быть пустым!", "Ошибка", JOptionPane.ERROR_MESSAGE);
-            } else {
-                frame.setVisible(false);
-                try {
-                    new ListForm(mainForm);
-                } catch (IOException ignored) {
-                }
+        add(inputPanel, BorderLayout.CENTER);
+
+        JButton createButton = new JButton("Создать");
+        createButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String executor = (String) executorComboBox.getSelectedItem();
+                String name = nameField.getText();
+                String priority = (String) priorityComboBox.getSelectedItem();
+                String status = "Открыта";
+                Task task = new Task(executor, name, priority, status);
+                mainForm.addTask(task);
+                dispose();
             }
         });
 
-        buttonBack.addActionListener(e -> {
-            frame.setVisible(false);
-            mainForm.getFrame().setVisible(true);
-        });
-        frame.add(panel);
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+        add(createButton, BorderLayout.SOUTH);
+
+        pack();
     }
-
-    private void saveTXT(Map<String,ArrayList<String>> map) {
-
-        try (BufferedWriter bf = new BufferedWriter(new FileWriter(file, true))) {
-
-            for (Map.Entry<String, ArrayList<String>> entry :
-                    map.entrySet()) {
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < entry.getValue().size(); i++) {
-                    sb.append(entry.getValue().get(i));
-                }
-                bf.write(entry.getKey() + ":"
-                        + sb.toString().replaceAll("\\[", "").replaceAll("\\]", ""));
-                bf.newLine();
-            }
-            bf.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 }
+
