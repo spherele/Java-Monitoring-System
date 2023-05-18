@@ -1,9 +1,9 @@
 package org.example;
 
 class Task {
-    private String executor;
-    private String name;
-    private String priority;
+    private final String executor;
+    private final String name;
+    private final String priority;
     private String status;
 
     public Task(String executor, String name, String priority, String status) {
@@ -33,12 +33,11 @@ class Task {
         this.status = status;
     }
 
-    public String toStringWithoutStatus() {
-        return "Задача: " + name + ", Приоритет: " + priority;
-    }
-
     @Override
     public String toString() {
-        return executor + ": " + toStringWithoutStatus() + ", Статус: " + status;
+        return "Исполнитель: " + executor + "\n" +
+                "Заявка: " + name + "\n" +
+                "Приоритет: " + priority + "\n" +
+                "Статус: " + status;
     }
 }

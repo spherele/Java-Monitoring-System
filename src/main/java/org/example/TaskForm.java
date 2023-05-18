@@ -7,13 +7,11 @@ import java.awt.event.ActionListener;
 
 
 class TaskForm extends JFrame {
-    private MainForm mainForm;
-    private JComboBox<String> executorComboBox;
-    private JTextField nameField;
-    private JComboBox<String> priorityComboBox;
+    private final JComboBox<String> executorComboBox;
+    private final JTextField nameField;
+    private final JComboBox<String> priorityComboBox;
 
     public TaskForm(MainForm mainForm) {
-        this.mainForm = mainForm;
         setTitle("Создание заявки");
         setPreferredSize(new Dimension(300, 200));
         setLayout(new BorderLayout());
